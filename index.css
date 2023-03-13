@@ -44,3 +44,19 @@ h5,
 h6 {
   overflow-wrap: break-word;
 }
+
+
+/*----------  Basic styles  ----------*/
+
+body {
+  font-family: 'Nunito', sans-serif;
+}
+
+h1 {
+  font-family: 'Zen Os', sans-serif;
+}
+
+h2,
+h3 {
+  font-family: 'Offside', cursive;
+}
