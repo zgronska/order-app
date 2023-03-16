@@ -7,45 +7,46 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Nunito&family=Offside&display=swap"
-      rel="stylesheet"
-    />
+      rel="stylesheet" />
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mos Eisley Cantina</title>
   </head>
   <body>
-    <header class="header">
-      <h1 class="page-title">Mos Eisley<br />Cantina</h1>
-      <h2 class="page-subtitle">Best joint in the galaxy!</h2>
-    </header>
-    <main class="app">
-      <section class="menu-section">
-        <div class="menu-item">
-          <div class="emoji">🍔</div>
-          <div class="text-content">
+    <div class="container">
+      <header class="header">
+        <h1 class="page-title">Mos Eisley<br />Cantina</h1>
+        <h2 class="page-subtitle">Best joint in the galaxy!</h2>
+      </header>
+      <main class="app">
+        <section class="menu-section">
+          <div class="menu-item">
+            <div class="emoji">🍔</div>
+            <div class="text-content">
+              <h3 class="item-title">Bantha Burger</h3>
+              <p class="ingredients">1, 2, 3</p>
+              <p class="price">$12</p>
+            </div>
+            <button class="add-btn">+</button>
+          </div>
+        </section>
+        <section class="your-order">
+          <h2 class="order-title">Your order</h2>
+          <div class="order-item">
             <h3 class="item-title">Bantha Burger</h3>
-            <p class="ingredients">1, 2, 3</p>
+            <button class="remove-btn">remove</button>
             <p class="price">$12</p>
           </div>
-          <button class="add-btn">+</button>
-        </div>
-      </section>
-      <section class="your-order">
-        <h2 class="order-title">Your order</h2>
-        <div class="order-item">
-          <h3 class="item-title">Bantha Burger</h3>
-          <button class="remove-btn">remove</button>
-          <p class="price">$12</p>
-        </div>
-        <hr />
-        <div class="total">
-          <h3 class="total-title">Total price:</h3>
-          <p class="price" id="total">$12</p>
-        </div>
-        <button class="submit-btn">Complete order</button>
-      </section>
-    </main>
+          <hr />
+          <div class="total">
+            <h3 class="total-title">Total price:</h3>
+            <p class="price" id="total">$12</p>
+          </div>
+          <button class="submit-btn">Complete order</button>
+        </section>
+      </main>
+    </div>
     <!-- <div class="payment-popup">
       <h2 class="payment-title">Enter card details</h2>
       <form class="payment-form">

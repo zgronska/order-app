@@ -1,5 +1,7 @@
 :root {
   --grey: #8b8b8b;
+  --blue: #cfd9f1;
+  --white: #f9f9f9;
 }
 
 *,
@@ -20,7 +22,7 @@ body {
 body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
-  min-height: 100vh;
+
 }
 
 img,
@@ -53,6 +55,7 @@ h6 {
 
 body {
   font-family: "Nunito", sans-serif;
+  background: var(--white);
 }
 
 h1 {
@@ -70,6 +73,15 @@ h2 {
   font-size: 1.5rem;
 }
 
+
+/*----------  Layout  ----------*/
+
+.container {
+  /* max-width: 50rem; */
+  display: grid;
+  /* gap: 2em; */
+}
+
 /*----------  Header  ----------*/
 
 .header {
@@ -80,8 +92,8 @@ h2 {
     center / cover no-repeat url(./bg.jpg);
   padding: 2.9rem;
   text-align: center;
-  --primary: #cfd9f1;
-  --secondary: #f9f9f9;
+  --primary: var(--blue);
+  --secondary: var(--white);
 }
 
 .page-title {
@@ -92,4 +104,42 @@ h2 {
   color: var(--secondary);
 }
 
+
 /*----------  App section  ----------*/
+
+.app {
+  padding: 3rem 2rem;
+}
+
+/*----------  Desktop version  ----------*/
+
+@media screen and (min-width: 600px) {
+  body {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+  }
+
+  .container {
+    min-height: 80%;
+    grid-template-columns: 1fr 1fr;
+    margin-inline: 2rem;
+    border-radius: 2rem;
+    box-shadow: 0.3px 0.5px 0.7px hsl(0deg 0% 63% / 0.34),
+      1.5px 2.9px 3.7px -0.4px hsl(0deg 0% 63% / 0.34),
+      2.7px 5.4px 6.8px -0.7px hsl(0deg 0% 63% / 0.34),
+      4.5px 8.9px 11.2px -1.1px hsl(0deg 0% 63% / 0.34),
+      7.1px 14.3px 18px -1.4px hsl(0deg 0% 63% / 0.34),
+      11.2px 22.3px 28.1px -1.8px hsl(0deg 0% 63% / 0.34),
+      17px 33.9px 42.7px -2.1px hsl(0deg 0% 63% / 0.34),
+      25px 50px 62.9px -2.5px hsl(0deg 0% 63% / 0.34);
+  }
+
+  .header {
+    border-radius: 2rem;
+  }
+
+  .app {
+    padding: 4rem 2.8rem;
+  }
+}
