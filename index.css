@@ -155,9 +155,11 @@ h3 {
   }
 
   .container {
-    min-height: 30rem;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: minmax(30rem, 50rem);
+    height: auto;
+    min-height: 0;
+    max-height: 50rem;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto 1fr auto;
     margin: 2rem;
     border-radius: 2rem;
     box-shadow: 0.3px 0.5px 0.7px hsl(0deg 0% 63% / 0.34),
@@ -171,6 +173,12 @@ h3 {
   }
 
   .header {
-    border-radius: 2rem;
+    border-radius: 2em 0 0 2em;
+    grid-row: 1 / span 3;
+  }
+
+  .your-order {
+    grid-row: 3;
+    border-radius: 2em 2em 2em 0;
   }
 }
