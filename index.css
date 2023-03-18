@@ -1,8 +1,19 @@
 :root {
-  --grey: #8b8b8b;
-  --blue: #cfd9f1;
-  --white: #f9f9f9;
-  --green: #16DB99;
+  /* Text colours */
+  --fg-dark: #121212;
+  --fg-light: #F9F8F6;
+
+  /* Backgrounds */
+  --bg-light: #F9F8F6;
+  --bg-accent-primary: #C59357;
+  --bg-accent-secondary: #3a6cb8;
+
+  /* Hover states */
+  --fg-hover: hsla(0, 0%, 7%, .8);
+  --bg-hover: hsla(40, 20%, 97%, .8);
+  --accent-primary-hover: #DCB781;
+  --accent-secondary-hover: #b83a6c;
+
 }
 
 *,
@@ -56,7 +67,8 @@ h6 {
 
 body {
   font-family: "Nunito", sans-serif;
-  background: var(--white);
+  background: var(--bg-light);
+  color: var(--fg-dark);
 }
 
 h1 {
@@ -89,18 +101,34 @@ h3 {
   border-radius: 0.25rem;
   transition: all 0.15s ease-in-out;
   -webkit-transition: all 0.15s ease-in-out;
-  background: none;
+  background: transparent;
+  color: inherit;
 }
+
+.btn:hover {
+  background: var(--btn-accent);
+}
+
+.btn:focus {
+  outline: 3px solid var(--btn-accent);
+}
+
+.btn:active {
+  translate: 2px 2px;
+}
+
 
 .submit-btn,
 .pay-btn {
-  color: var(--white);
-  background: var(--green);
+  color: var(--fg-light);
+  background: var(--bg-accent-secondary);
+  --btn-accent: var(--accent-secondary-hover);
   font-weight: 700;
   padding: 1em;
   width: 100%;
   border-radius: .3em;
 }
+
 
 /*----------  Layout  ----------*/
 
@@ -119,17 +147,16 @@ h3 {
     center / cover no-repeat url(./bg.jpg);
   padding: 2.9em;
   text-align: center;
-  --primary: var(--white);
-  --secondary: var(--blue);
   border-radius: 0 0 2em 2em;
 }
 
+
 .page-title {
-  color: var(--primary);
+  color: var(--fg-light);
 }
 
 .page-subtitle {
-  color: var(--secondary);
+  color: var(--accent-primary-hover)
 }
 
 /*----------  App section  ----------*/
@@ -138,10 +165,30 @@ h3 {
   margin: 1em 2em;
 }
 
+.menu-section::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 1.5em;
+}
+
+.menu-section::-webkit-scrollbar {
+  width: 6px;
+  display: none;
+}
+
+.menu-section::-webkit-scrollbar-thumb {
+  background-color: var(--accent-bg);
+  border-radius: 1.5em;
+}
+
+.menu-section:hover::-webkit-scrollbar {
+  display: block;
+}
+
 .your-order {
   align-self: end;
   padding: 1.5em;
-  background: var(--blue);
+  background: var(--bg-accent-primary);
+  color: var(--fg-dark);
   border-radius: 2em 2em 0 0;
 }
 
