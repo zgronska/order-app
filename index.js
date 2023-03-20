@@ -23,7 +23,8 @@ function getMenuHTML() {
             <p class="ingredients">${ingredientsList}</p>
             <p class="price">ᖬ${price}</p>
           </div>
-          <button class="btn add-btn" data-add=${id}>+</button>
+          <button class="add-btn btn" data-add=${id}><i class="fa-solid fa-plus"></i></button>
+          
         </div>`;
 
     menuHTML += menuItem;
@@ -37,3 +38,13 @@ function renderMenu() {
 }
 
 renderMenu();
+
+// Rotate the add icon
+//TODO: Modify this function to actually add items to order
+const addBtn = document.querySelectorAll(".add-btn");
+
+addBtn.forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    btn.classList.toggle("added");
+  });
+});
