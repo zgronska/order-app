@@ -48,3 +48,19 @@ addBtn.forEach((btn) => {
     btn.classList.toggle("added");
   });
 });
+
+// Attach an event listener to each add-btn button so that when a user clicks on it, the item is added to their order.
+// Create an empty order array to store the user's order.
+// Write a function that takes the order array and renders it in the your-order div on the page.
+// When the amount of items in the order array is greater than 0, display the your-order div.
+
+document.addEventListener("click", (e) => {
+  if (e.target.dataset.add) {
+    handleAddToOrder(e.target.dataset.add);
+  }
+  //TODO: event listeners for other buttons
+});
+
+function handleAddToOrder(itemId) {
+  const orderArray = JSON.parse(localStorage.getItem("orderArray")) || [];
+}
