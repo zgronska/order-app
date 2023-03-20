@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from "https://jspm.dev/uuid";
 
-const menuArray = [
+export const menuArray = [
   {
     name: "Blue Milk",
     ingredients: ["Bantha milk"],
@@ -11,7 +11,7 @@ const menuArray = [
   },
   {
     name: "Jawa Juice",
-    ingredients: ["fruit juice"],
+    ingredients: ["fruit (?) juice"],
     id: uuidv4(),
     price: 7,
     emoji: "🍹",
@@ -72,7 +72,7 @@ const menuArray = [
       "sour cream",
       "guacamole",
     ],
-    id: 7,
+    id: uuidv4(),
     price: 9,
     emoji: "🌮",
     category: "Main Meal",
