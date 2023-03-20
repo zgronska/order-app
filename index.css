@@ -218,11 +218,13 @@ h3 {
 
 .add-btn {
   margin-left: auto;
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
   border: 1.5px solid var(--bg-accent-primary);
   border-radius: 50%;
   font-size: 1.2em;
   align-self: start;
-  padding: .3em;
   transition: all .3s linear;
 }
 

@@ -23,7 +23,8 @@ function getMenuHTML() {
             <p class="ingredients">${ingredientsList}</p>
             <p class="price">ᖬ${price}</p>
           </div>
-          <i class="fa-solid fa-plus btn add-btn" data-add=${id}></i>
+          <button class="add-btn btn" data-add=${id}><i class="fa-solid fa-plus"></i></button>
+          
         </div>`;
 
     menuHTML += menuItem;
