@@ -328,6 +328,19 @@ h3 {
   margin-top: 1.5em;
 }
 
+
+/*----------  Thank you pop-up  ----------*/
+
+.thankyou-popup {
+  margin: 2.2em auto;
+  background: var(--bg-accent-secondary);
+  color: var(--fg-light);
+  padding: 1.5em 2em;
+  width: fit-content;
+  text-align: center;
+  border-radius: .3em;
+}
+
 /*----------  Desktop version  ----------*/
 
 @media screen and (min-width: 700px) {
