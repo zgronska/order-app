@@ -191,7 +191,6 @@ h3 {
 
 .menu-item {
   display: flex;
-  justify-content: space-between;
   gap: 1em;
   border-bottom: 1px solid var(--bg-accent-primary);
   padding-bottom: 2em;
@@ -216,23 +215,29 @@ h3 {
   margin-top: .3em;
 }
 
+.text-content {
+  padding-right: 1em;
+  flex: 1;
+}
+
 .add-btn {
-  margin-left: auto;
-  width: 2rem;
-  height: 2rem;
   cursor: pointer;
-  border: 1.5px solid var(--bg-accent-primary);
-  border-radius: 50%;
-  font-size: 1.2em;
-  align-self: start;
   transition: all .3s linear;
+  align-self: start;
 }
 
 .add-btn.added {
   transform: rotate(135deg);
-  color: var(--accent-secondary-hover);
-  border-color: var(--bg-accent-secondary);
 }
+
+.add-btn.added .fa-plus {
+  color: var(--accent-secondary-hover);
+}
+
+.add-btn.added .fa-circle {
+  color: var(--bg-accent-secondary);
+}
+
 
 /*----------  Your order section  ----------*/
 

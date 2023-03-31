@@ -7,13 +7,8 @@ function getMenuHTML() {
   menuArray.forEach((item) => {
     const { name, ingredients, id, price, emoji, category } = item;
 
-    let ingredientsList = "";
-
-    if (ingredients.length === 1) {
-      ingredientsList = ingredients[0];
-    } else if (ingredients.length > 1) {
-      ingredientsList = ingredients.join(", ");
-    }
+    const ingredientsList =
+      ingredients.length === 1 ? ingredients[0] : ingredients.join(", ");
 
     const menuItem = `
     <div class="menu-item" id=${id}>
@@ -23,7 +18,7 @@ function getMenuHTML() {
             <p class="ingredients">${ingredientsList}</p>
             <p class="price">ᖬ${price}</p>
           </div>
-          <button class="add-btn btn" data-add=${id}><i class="fa-solid fa-plus"></i></button>
+          <button class="add-btn btn" data-add=${id}><i class="fa-solid fa-plus"}></i></button>
           
         </div>`;
 
@@ -55,12 +50,19 @@ addBtn.forEach((btn) => {
 // When the amount of items in the order array is greater than 0, display the your-order div.
 
 document.addEventListener("click", (e) => {
-  if (e.target.dataset.add) {
-    handleAddToOrder(e.target.dataset.add);
+  if (e.target.dataset.add || e.target.parentNode.dataset.add) {
+    const id = e.target.dataset.add
+      ? e.target.dataset.add
+      : e.target.parentNode.dataset.add;
+    handleAddToOrder(id);
   }
   //TODO: event listeners for other buttons
 });
 
+const orderArray = JSON.parse(localStorage.getItem("orderArray")) || [];
+
 function handleAddToOrder(itemId) {
-  const orderArray = JSON.parse(localStorage.getItem("orderArray")) || [];
+  const selectedItem = menuArray.find((item) => item.id === itemId);
+  orderArray.push(selectedItem);
+  localStorage.setItem("orderArray", JSON.stringify(orderArray));
 }
