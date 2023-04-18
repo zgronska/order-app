@@ -38,9 +38,6 @@ function handleClickEvent(e) {
     const id = target.dataset.add || targetParent.dataset.add
     handleOrder(id, "add")
     // Trigger animation
-    target.dataset.add
-      ? target.classList.toggle("added")
-      : targetParent.classList.toggle("added")
   } else if (target.dataset.remove) {
     handleOrder(target.dataset.remove, "remove")
   }

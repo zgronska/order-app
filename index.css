@@ -1,19 +1,18 @@
 :root {
   /* Text colours */
   --fg-dark: #121212;
-  --fg-light: #F9F8F6;
+  --fg-light: #f9f8f6;
 
   /* Backgrounds */
-  --bg-light: #F9F8F6;
-  --bg-accent-primary: #C59357;
+  --bg-light: #f9f8f6;
+  --bg-accent-primary: #c59357;
   --bg-accent-secondary: #3a6cb8;
 
   /* Hover states */
-  --dark-hover: hsla(0, 0%, 7%, .8);
-  --light-hover: hsla(40, 20%, 97%, .8);
-  --accent-primary-hover: #DCB781;
+  --dark-hover: hsla(0, 0%, 7%, 0.8);
+  --light-hover: hsla(40, 20%, 97%, 0.8);
+  --accent-primary-hover: #dcb781;
   --accent-secondary-hover: #b83a6c;
-
 }
 
 *,
@@ -34,7 +33,6 @@ body {
 body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
-
 }
 
 img,
@@ -75,7 +73,7 @@ h1 {
   font-family: "Zen Os", sans-serif;
   font-weight: 400;
   font-size: 1.4rem;
-  margin-bottom: .3em;
+  margin-bottom: 0.3em;
 }
 
 h2,
@@ -116,7 +114,6 @@ h3 {
   translate: 2px 2px;
 }
 
-
 .submit-btn,
 .pay-btn {
   --btn-color: var(--fg-light);
@@ -125,13 +122,12 @@ h3 {
   font-weight: 700;
   padding: 1em;
   width: 100%;
-  border-radius: .3em;
+  border-radius: 0.3em;
 }
 
 .hidden {
   display: none;
 }
-
 
 /*----------  Layout  ----------*/
 
@@ -144,22 +140,23 @@ h3 {
 /*----------  Header  ----------*/
 
 .header {
-  background: linear-gradient(90deg,
+  background: linear-gradient(
+      90deg,
       rgba(31, 35, 46, 0.6) 0%,
-      rgba(31, 35, 46, 0.6) 100%),
+      rgba(31, 35, 46, 0.6) 100%
+    ),
     center / cover no-repeat url(./bg.jpg);
   padding: 1.5em;
   text-align: center;
   border-radius: 0 0 2em 2em;
 }
 
-
 .page-title {
   color: var(--fg-light);
 }
 
 .page-subtitle {
-  color: var(--accent-primary-hover)
+  color: var(--accent-primary-hover);
 }
 
 /*----------  App section  ----------*/
@@ -198,7 +195,7 @@ h3 {
   gap: 1em;
   border-bottom: 1px solid var(--bg-accent-primary);
   padding-bottom: 2em;
-  margin-right: .5rem;
+  margin-right: 0.5rem;
 }
 
 .menu-item:last-child {
@@ -208,7 +205,7 @@ h3 {
 .emoji {
   font-size: 4em;
   line-height: 125%;
-  opacity: .8;
+  opacity: 0.8;
 }
 
 .ingredients {
@@ -216,7 +213,7 @@ h3 {
 }
 
 .menu-item .price {
-  margin-top: .3em;
+  margin-top: 0.3em;
 }
 
 .text-content {
@@ -226,12 +223,16 @@ h3 {
 
 .add-btn {
   cursor: pointer;
-  transition: all .3s linear;
+  transition: all 0.3s linear;
   align-self: start;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .add-btn.added {
-  transform: rotate(135deg);
+  transform-origin: center;
+  transform: rotate(180deg);
 }
 
 .add-btn.added .fa-plus {
@@ -241,7 +242,6 @@ h3 {
 .add-btn.added .fa-circle {
   color: var(--bg-accent-secondary);
 }
-
 
 /*----------  Your order section  ----------*/
 
@@ -266,7 +266,7 @@ h3 {
 .order-item {
   display: flex;
   align-items: center;
-  column-gap: .6em;
+  column-gap: 0.6em;
 }
 
 .your-order .price {
@@ -275,7 +275,7 @@ h3 {
 
 .remove-btn {
   --btn-color: var(--fg-light);
-  font-size: .8em;
+  font-size: 0.8em;
 }
 
 .remove-btn:hover {
@@ -285,9 +285,8 @@ h3 {
 .total {
   border-top: 3px solid var(--accent-primary-hover);
   display: flex;
-  padding-block: .8em 1.5em;
+  padding-block: 0.8em 1.5em;
 }
-
 
 /*----------  Payment pop-up  ----------*/
 
@@ -307,12 +306,11 @@ h3 {
   background: var(--bg-light);
   filter: drop-shadow(5.18654px 5.18654px 255.437px rgba(0, 0, 0, 0.5));
   padding: 1.8em 1.4em;
-  border-radius: .4em;
+  border-radius: 0.4em;
   box-shadow: 0.3px 0.5px 0.7px hsla(0, 0%, 25%, 0.36),
     0.8px 1.6px 2px -0.8px hsl(0, 0%, 25%, 0.36),
     2.1px 4.1px 5.2px -1.7px hsl(0, 0%, 25%, 0.36),
     5px 10px 12.6px -2.5px hsl(0, 0%, 25%, 0.36);
-  ;
 }
 
 .payment-title {
@@ -328,7 +326,7 @@ h3 {
 
 .payment-form input {
   border: 1px solid var(--bg-accent-primary);
-  padding: .5em;
+  padding: 0.5em;
 }
 
 .payment-form input:focus {
@@ -337,13 +335,12 @@ h3 {
 
 .payment-form input::placeholder {
   color: var(--accent-primary-hover);
-  font-size: .9em;
+  font-size: 0.9em;
 }
 
 .pay-btn {
   margin-top: 1.5em;
 }
-
 
 /*----------  Thank you pop-up  ----------*/
 
@@ -354,7 +351,7 @@ h3 {
   padding: 1.5em 2em;
   width: fit-content;
   text-align: center;
-  border-radius: .3em;
+  border-radius: 0.3em;
 }
 
 /*----------  Desktop version  ----------*/
