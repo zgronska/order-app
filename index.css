@@ -63,13 +63,6 @@ body {
   color: var(--l-fg);
 }
 
-h1 {
-  font-family: "Zen Os", sans-serif;
-  font-weight: 400;
-  font-size: 1.4rem;
-  margin-bottom: 0.3em;
-}
-
 h2,
 h3 {
   font-family: "Offside", cursive;
@@ -142,10 +135,10 @@ h3 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.5em;
+  padding: 1em;
 }
 
-.add-to-cart {
+.view-cart {
   padding: 1em;
   position: relative;
 }
@@ -166,16 +159,15 @@ mark {
 }
 
 .cart-logo {
-  opacity: 0.7;
   cursor: pointer;
 }
 
 /*----------  App section  ----------*/
 .menu-section {
   overflow-y: scroll;
-  margin: 1em 2.2em;
+  padding: 1em 2em;
   display: grid;
-  row-gap: 2.2em;
+  row-gap: 2em;
   grid-area: main;
 }
 
@@ -190,7 +182,7 @@ mark {
 }
 
 .menu-section::-webkit-scrollbar-thumb {
-  background-color: var(--accent);
+  background-color: var(--accent-light);
   border-radius: 1.5em;
   visibility: hidden;
 }
@@ -206,8 +198,8 @@ mark {
   display: flex;
   gap: 1em;
   border-bottom: 1px solid var(--secondary);
-  padding-bottom: 2em;
-  margin-right: 0.5rem;
+  padding-bottom: 1em;
+  margin-right: 0.5em;
 }
 
 .menu-item:last-child {
@@ -221,7 +213,8 @@ mark {
 }
 
 .ingredients {
-  color: var(--accent-light);
+  font-size: 0.8em;
+  opacity: 0.6;
 }
 
 .menu-item .price {
@@ -229,7 +222,6 @@ mark {
 }
 
 .text-content {
-  padding-right: 1em;
   flex: 1;
 }
 
@@ -261,10 +253,10 @@ mark {
 
 .your-order {
   grid-area: cart;
-  padding: 1.5em;
+  padding: 1em 1.5em;
   background: var(--l-fg);
   color: var(--d-fg);
-  border-radius: 2em 2em 0 0;
+  border-radius: 1em 1em 0 0;
 }
 
 .order-title {
@@ -295,9 +287,14 @@ mark {
 }
 
 .total {
-  border-top: 3px solid var(--secondary);
+  border-top: 3px solid var(--accent-light);
   display: flex;
   padding-block: 0.8em 1.5em;
+}
+
+.total .price {
+  color: var(--accent);
+  font-weight: 600;
 }
 
 /*----------  Payment pop-up  ----------*/
@@ -368,50 +365,23 @@ mark {
 
 /*----------  Desktop version  ----------*/
 
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 600px) {
   body {
     display: grid;
     place-content: center;
   }
 
-  h1 {
-    font-size: 2rem;
-  }
-
   .container {
-    height: auto;
-    min-height: 0;
-    max-height: 50rem;
     grid-template-areas:
       "header header header"
       "main main cart"
       "main main cart"
       "main main cart";
-    margin: 2rem;
-    border-radius: 2rem;
-    box-shadow: 0.3px 0.5px 0.7px hsl(0deg 0% 63% / 0.34),
-      1.5px 2.9px 3.7px -0.4px hsl(0deg 0% 63% / 0.34),
-      2.7px 5.4px 6.8px -0.7px hsl(0deg 0% 63% / 0.34),
-      4.5px 8.9px 11.2px -1.1px hsl(0deg 0% 63% / 0.34),
-      7.1px 14.3px 18px -1.4px hsl(0deg 0% 63% / 0.34),
-      11.2px 22.3px 28.1px -1.8px hsl(0deg 0% 63% / 0.34),
-      17px 33.9px 42.7px -2.1px hsl(0deg 0% 63% / 0.34),
-      25px 50px 62.9px -2.5px hsl(0deg 0% 63% / 0.34);
-  }
-
-  .header {
-    border-radius: 2em 0 0 2em;
-    grid-row: 1 / span 3;
+    padding: 1.5em;
+    column-gap: 1em;
   }
 
   .your-order {
-    grid-row: 3;
-    border-radius: 2em 2em 2em 0;
-  }
-
-  .submit-btn {
-    width: fit-content;
-    display: block;
-    margin: 0 auto;
+    border-radius: 1em;
   }
 }
