@@ -165,7 +165,8 @@ mark {
 /*----------  App section  ----------*/
 .menu-section {
   overflow-y: scroll;
-  padding: 1em 2em;
+  margin-inline: 2em;
+  padding: 1em 1em 1.5em 0;
   display: grid;
   row-gap: 2em;
   grid-area: main;
@@ -179,6 +180,7 @@ mark {
 
 .menu-section::-webkit-scrollbar {
   width: 6px;
+  margin-left: 1em;
 }
 
 .menu-section::-webkit-scrollbar-thumb {
@@ -198,8 +200,10 @@ mark {
   display: flex;
   gap: 1em;
   border-bottom: 1px solid var(--secondary);
-  padding-bottom: 1em;
-  margin-right: 0.5em;
+  padding: 1em;
+  background: var(--l-fg);
+  color: var(--d-fg);
+  border-radius: 1em;
 }
 
 .menu-item:last-child {
@@ -309,10 +313,12 @@ mark {
   display: flex;
   justify-content: center;
   align-items: center;
+  background: hsl(249, 18%, 30%, 0.7);
 }
 
 .payment-popup {
-  background: var(--bg);
+  background: var(--l-fg-dark);
+  color: var(--d-fg);
   filter: drop-shadow(5.18654px 5.18654px 255.437px rgba(0, 0, 0, 0.5));
   padding: 1.8em 1.4em;
   border-radius: 0.4em;
@@ -381,7 +387,16 @@ mark {
     column-gap: 1em;
   }
 
+  .header {
+    padding-block: 0.5em;
+  }
+
   .your-order {
     border-radius: 1em;
+  }
+
+  .menu-section {
+    margin-inline: 0;
+    padding-block: 0;
   }
 }
