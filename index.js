@@ -28,34 +28,30 @@ function renderMenu() {
   document.querySelector(".menu-section").innerHTML = getMenuHTML()
 }
 
-// Rotate the add icon
-// //TODO: Modify this function to actually add items to order
-// const addBtn = document.querySelectorAll(".add-btn");
-
-// addBtn.forEach((btn) => {
-//   btn.addEventListener("click", (e) => {
-//     btn.classList.toggle("added");
-//   });
-// });
-
+// Listen for clicks and fire functions
 function handleClickEvent(e) {
-  console.log(e.target.parentNode.dataset.add)
-  if (e.target.dataset.add || e.target.parentNode.dataset.add) {
-    const id = e.target.dataset.add
-      ? e.target.dataset.add
-      : e.target.parentNode.dataset.add
+  const target = e.target
+  const targetParent = target.parentNode
+
+  // Targetting both the button div and the icon within it
+  if (target.dataset.add || targetParent.dataset.add) {
+    const id = target.dataset.add || targetParent.dataset.add
     handleOrder(id, "add")
-  } else if (e.target.dataset.remove) {
-    console.log(e.target.dataset.remove)
-    handleOrder(e.target.dataset.remove, "remove")
+    // Trigger animation
+    target.dataset.add
+      ? target.classList.toggle("added")
+      : targetParent.classList.toggle("added")
+  } else if (target.dataset.remove) {
+    handleOrder(target.dataset.remove, "remove")
   }
-  //TODO: event listeners for other buttons
 }
 
 document.addEventListener("click", handleClickEvent)
 
+// Define array of items in cart
 let orderArray = JSON.parse(localStorage.getItem("orderArray")) || []
 
+// Add or remove items from cart
 function handleOrder(itemId, action) {
   const selectedItem = menuArray.find(item => item.id === itemId)
   const existingItem = orderArray.find(item => item.id === itemId)
@@ -79,6 +75,7 @@ function handleOrder(itemId, action) {
   renderOrder()
 }
 
+// Render cart section
 function getOrderHTML() {
   if (orderArray.length > 0) {
     let orderItems = ""
@@ -125,6 +122,7 @@ function renderOrder() {
   }
 }
 
+// Functions to fire on page load
 window.addEventListener("DOMContentLoaded", () => {
   renderMenu()
   renderOrder()
