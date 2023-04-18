@@ -1,10 +1,9 @@
-import { v4 as uuidv4 } from "https://jspm.dev/uuid";
-
 export const menuArray = [
   {
     name: "Blue Milk",
     ingredients: ["Bantha milk"],
-    id: uuidv4(),
+    id: "item-0",
+    quantity: 0,
     price: 5,
     emoji: "🥛",
     category: "Drink",
@@ -12,7 +11,8 @@ export const menuArray = [
   {
     name: "Jawa Juice",
     ingredients: ["fruit (?) juice"],
-    id: uuidv4(),
+    id: "item-1",
+    quantity: 0,
     price: 7,
     emoji: "🍹",
     category: "Drink",
@@ -26,7 +26,8 @@ export const menuArray = [
       "cheese",
       "special sauce",
     ],
-    id: uuidv4(),
+    id: "item-2",
+    quantity: 0,
     price: 12,
     emoji: "🍔",
     category: "Main Meal",
@@ -34,7 +35,8 @@ export const menuArray = [
   {
     name: "Nerf Nuggets",
     ingredients: ["Nerf meat", "breadcrumbs", "spices"],
-    id: uuidv4(),
+    id: "item-3",
+    quantity: 0,
     price: 8,
     emoji: "🍗",
     category: "Main Meal",
@@ -42,7 +44,8 @@ export const menuArray = [
   {
     name: "Wookiee Cookies",
     ingredients: ["Wookiee fur", "flour", "sugar", "chocolate chips"],
-    id: uuidv4(),
+    id: "item-4",
+    quantity: 0,
     price: 6,
     emoji: "🍪",
     category: "Dessert",
@@ -50,7 +53,8 @@ export const menuArray = [
   {
     name: "Hutt Pizza",
     ingredients: ["pizza dough", "tomato sauce", "cheese", "Hutt spices"],
-    id: uuidv4(),
+    id: "item-5",
+    quantity: 0,
     price: 14,
     emoji: "🍕",
     category: "Main Meal",
@@ -58,7 +62,8 @@ export const menuArray = [
   {
     name: "Ewok Stew",
     ingredients: ["Ewok meat", "vegetables", "spices"],
-    id: uuidv4(),
+    id: "item-6",
+    quantity: 0,
     price: 10,
     emoji: "🍲",
     category: "Main Meal",
@@ -72,9 +77,10 @@ export const menuArray = [
       "sour cream",
       "guacamole",
     ],
-    id: uuidv4(),
+    id: "item-7",
+    quantity: 0,
     price: 9,
     emoji: "🌮",
     category: "Main Meal",
   },
-];
+]
