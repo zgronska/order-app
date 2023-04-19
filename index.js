@@ -8,6 +8,8 @@ function handleClickEvent(e) {
   const target = e.target
   const targetParent = target.parentNode
 
+  console.log(target.id)
+
   // Targetting both the button div and the icon within it
   if (target.dataset.add || targetParent.dataset.add) {
     const id = target.dataset.add || targetParent.dataset.add
@@ -15,6 +17,8 @@ function handleClickEvent(e) {
     // Trigger animation
   } else if (target.dataset.remove) {
     handleOrder(target.dataset.remove, "remove")
+  } else if (target.id === "submit-btn") {
+    renderPayment()
   }
 }
 
@@ -68,12 +72,13 @@ function updateCartIcon() {
 function getOrderHTML(orderArray) {
   if (orderArray.length > 0) {
     let orderItems = ""
-    let total = 0
+    const total = orderArray.reduce(
+      (acc, curr) => acc + curr.quantity * curr.price,
+      0
+    )
 
     orderArray.forEach(item => {
       const { name, price, quantity, id } = item
-
-      total += quantity * price
 
       orderItems += `
       <div class="order-item" id="order-${id}">
@@ -94,7 +99,7 @@ function getOrderHTML(orderArray) {
       <h3 class="total-title">Total price:</h3>
       <p class="price" id="total">ᖬ${total}</p>
     </div>
-    <button class="btn submit-btn">Complete order</button>
+    <button class="btn submit-btn" id="submit-btn">Complete order</button>
   `
   } else {
     return `<p class="empty-cart">Your cart is empty.</p>`
@@ -125,12 +130,73 @@ function getMenuHTML(menuArray) {
     .join("")
 }
 
+function getPaymentHTML() {
+  const total = orderArray.reduce(
+    (acc, curr) => acc + curr.quantity * curr.price,
+    0
+  )
+
+  return `
+   <div class="payment-popup">
+        <div
+          id="close-popup"
+          class="btn"
+        >
+          <i class="fa-solid fa-xmark"></i>
+        </div>
+        <h2 class="payment-title">Enter card details</h2>
+        <form class="payment-form">
+          <input
+            required
+            type="text"
+            pattern="[A-Za-z\s]{3,}"
+            autocomplete="cc-name"
+            name="name"
+            id="payment-name"
+            placeholder="Enter your name"
+          />
+          <input
+            required
+            type="tel"
+            inputmode="numeric"
+            pattern="[0-9\s]{13,19}"
+            autocomplete="cc-number"
+            name="card"
+            id="payment-card"
+            placeholder="Enter card number"
+          />
+          <input
+            required
+            type="tel"
+            inputmode="numeric"
+            pattern="[0-9\s]{3,4}"
+            autocomplete="cc-csc"
+            name="cvv"
+            id="payment-cvv"
+            placeholder="Enter CVV"
+          />
+          <button
+            class="btn pay-btn"
+            type="submit"
+          >
+            Pay ᖬ${total}
+          </button>
+        </form>
+      </div>
+  `
+}
+
 function renderMenu() {
   document.querySelector(".menu-section").innerHTML = getMenuHTML(menuArray)
 }
 
 function renderOrder() {
   document.querySelector(".your-order").innerHTML = getOrderHTML(orderArray)
+}
+
+function renderPayment() {
+  document.querySelector("#payment-section").classList.remove("hidden")
+  document.querySelector("#payment-section").innerHTML = getPaymentHTML()
 }
 
 // Functions to fire on page load
