@@ -96,7 +96,9 @@ function getOrderHTML(orderArray) {
     </div>
     <button class="btn submit-btn">Complete order</button>
   `
-  } else return ``
+  } else {
+    return `<p class="empty-cart">Your cart is empty.</p>`
+  }
 }
 
 // Render menu items

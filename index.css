@@ -276,11 +276,12 @@ h3 {
   border-radius: 1em 1em 0 0;
   background: var(--l-fg);
 
+  text-align: center;
   color: var(--d-fg);
 }
 
-.order-title {
-  text-align: center;
+.empty-cart {
+  color: var(--secondary);
 }
 
 .order-items {
