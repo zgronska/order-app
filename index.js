@@ -1,32 +1,7 @@
 import { menuArray } from "/data.js"
 
-// Render menu items
-function getMenuHTML(menuArray) {
-  return menuArray
-    .map(({ name, ingredients, id, price, emoji }) => {
-      const ingredientsList =
-        ingredients.length === 1 ? ingredients[0] : ingredients.join(", ")
-
-      return `
-        <div class="menu-item" id=${id}>
-          <div class="emoji">${emoji}</div>
-          <div class="text-content">
-            <h3 class="item-title">${name}</h3>
-            <p class="ingredients">${ingredientsList}</p>
-            <p class="price">ᖬ${price}</p>
-          </div>
-          <button class="add-btn btn" data-add=${id}>
-            <i class="fa-solid fa-plus"></i>
-          </button>
-        </div>
-      `
-    })
-    .join("")
-}
-
-function renderMenu() {
-  document.querySelector(".menu-section").innerHTML = getMenuHTML(menuArray)
-}
+// Define array of items in cart
+const orderArray = JSON.parse(localStorage.getItem("orderArray")) || []
 
 // Listen for clicks and fire functions
 function handleClickEvent(e) {
@@ -42,11 +17,6 @@ function handleClickEvent(e) {
     handleOrder(target.dataset.remove, "remove")
   }
 }
-
-document.addEventListener("click", handleClickEvent)
-
-// Define array of items in cart
-const orderArray = JSON.parse(localStorage.getItem("orderArray")) || []
 
 // Add or remove items from cart
 function handleOrder(itemId, action) {
@@ -95,7 +65,7 @@ function updateCartIcon() {
 }
 
 // Render cart section
-function getOrderHTML() {
+function getOrderHTML(orderArray) {
   if (orderArray.length > 0) {
     let orderItems = ""
     let total = 0
@@ -129,10 +99,36 @@ function getOrderHTML() {
   } else return ``
 }
 
-function renderOrder() {
-  const orderSection = document.querySelector(".your-order")
+// Render menu items
+function getMenuHTML(menuArray) {
+  return menuArray
+    .map(({ name, ingredients, id, price, emoji }) => {
+      const ingredientsList =
+        ingredients.length === 1 ? ingredients[0] : ingredients.join(", ")
 
-  orderSection.innerHTML = getOrderHTML()
+      return `
+        <div class="menu-item" id=${id}>
+          <div class="emoji">${emoji}</div>
+          <div class="text-content">
+            <h3 class="item-title">${name}</h3>
+            <p class="ingredients">${ingredientsList}</p>
+            <p class="price">ᖬ${price}</p>
+          </div>
+          <button class="add-btn btn" data-add=${id}>
+            <i class="fa-solid fa-plus"></i>
+          </button>
+        </div>
+      `
+    })
+    .join("")
+}
+
+function renderMenu() {
+  document.querySelector(".menu-section").innerHTML = getMenuHTML(menuArray)
+}
+
+function renderOrder() {
+  document.querySelector(".your-order").innerHTML = getOrderHTML(orderArray)
 }
 
 // Functions to fire on page load
@@ -141,3 +137,5 @@ window.addEventListener("DOMContentLoaded", () => {
   renderOrder()
   updateCartIcon()
 })
+
+document.addEventListener("click", handleClickEvent)
