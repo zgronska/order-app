@@ -99,7 +99,8 @@ h3 {
 }
 
 .btn:focus {
-  outline: 0.125rem solid var(--accent-light);
+  outline: none;
+  background: var(--btn-accent);
 }
 
 .btn:active {
@@ -116,6 +117,11 @@ h3 {
 
   --btn-color: var(--l-fg);
   --btn-accent: var(--accent);
+}
+
+.submit-btn:focus,
+.pay-btn:focus {
+  outline: 2px solid var(--accent-light);
 }
 
 .hidden {
@@ -249,22 +255,11 @@ h3 {
   align-self: start;
   justify-content: center;
 
-  transition: all 0.3s linear;
-
   cursor: pointer;
 }
 
-.add-btn.added {
-  transform: rotate(180deg);
-  transform-origin: center;
-}
-
-.add-btn.added .fa-plus {
+.add-btn:focus {
   color: var(--accent);
-}
-
-.add-btn.added .fa-circle {
-  color: var(--accent-dark);
 }
 
 /*----------  Your order section  ----------*/
