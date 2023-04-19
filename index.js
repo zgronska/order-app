@@ -1,7 +1,7 @@
 import { menuArray } from "/data.js"
 
 // Render menu items
-function getMenuHTML() {
+function getMenuHTML(menuArray) {
   return menuArray
     .map(({ name, ingredients, id, price, emoji }) => {
       const ingredientsList =
@@ -25,7 +25,7 @@ function getMenuHTML() {
 }
 
 function renderMenu() {
-  document.querySelector(".menu-section").innerHTML = getMenuHTML()
+  document.querySelector(".menu-section").innerHTML = getMenuHTML(menuArray)
 }
 
 // Listen for clicks and fire functions
@@ -46,7 +46,7 @@ function handleClickEvent(e) {
 document.addEventListener("click", handleClickEvent)
 
 // Define array of items in cart
-let orderArray = JSON.parse(localStorage.getItem("orderArray")) || []
+const orderArray = JSON.parse(localStorage.getItem("orderArray")) || []
 
 // Add or remove items from cart
 function handleOrder(itemId, action) {
@@ -67,9 +67,31 @@ function handleOrder(itemId, action) {
       orderArray.splice(orderArray.indexOf(existingItem), 1)
     }
   }
-
+  updateCartIcon()
   localStorage.setItem("orderArray", JSON.stringify(orderArray))
   renderOrder()
+}
+
+// Get items count
+function getCartCount() {
+  let cartCount = 0
+  orderArray.forEach(item => {
+    cartCount += item.quantity
+  })
+  return cartCount
+}
+
+// Update cart notif
+function updateCartIcon() {
+  const cartNotif = document.getElementById("cart-count")
+  const cartCount = getCartCount()
+
+  if (cartCount === 0) {
+    cartNotif.classList.add("hidden")
+  } else {
+    cartNotif.classList.remove("hidden")
+    cartNotif.textContent = cartCount
+  }
 }
 
 // Render cart section
@@ -111,16 +133,11 @@ function renderOrder() {
   const orderSection = document.querySelector(".your-order")
 
   orderSection.innerHTML = getOrderHTML()
-
-  if (orderArray.length > 0) {
-    orderSection.classList.remove("hidden")
-  } else {
-    // orderSection.classList.add("hidden")
-  }
 }
 
 // Functions to fire on page load
 window.addEventListener("DOMContentLoaded", () => {
   renderMenu()
   renderOrder()
+  updateCartIcon()
 })

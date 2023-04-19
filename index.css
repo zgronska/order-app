@@ -98,8 +98,8 @@ h3 {
   background: var(--btn-accent);
 }
 
-.btn:focus-visible {
-  outline: 0.125rem solid var(--btn-accent);
+.btn:focus {
+  outline: 0.125rem solid var(--accent-light);
 }
 
 .btn:active {
@@ -126,7 +126,11 @@ h3 {
 
 .container {
   display: grid;
-  grid-template-areas: "header header header" "main main main" "main main main" "cart cart cart";
+  grid-template-areas:
+    "header header header"
+    "main main main"
+    "main main main"
+    "cart cart cart";
 
   height: 100vh;
 }
@@ -148,16 +152,18 @@ h3 {
   padding: 1em;
 }
 
-mark {
+#cart-count {
   position: absolute;
   right: -0.1em;
   top: -0.1em;
 
+  min-width: 2em;
   padding: 0.3em;
   border-radius: 50%;
   background: var(--accent);
 
   font-size: 0.7em;
+  text-align: center;
   color: var(--l-fg-dark);
 }
 
