@@ -1,19 +1,12 @@
 :root {
-  /* Text colours */
-  --fg-dark: #121212;
-  --fg-light: #F9F8F6;
-
-  /* Backgrounds */
-  --bg-light: #F9F8F6;
-  --bg-accent-primary: #C59357;
-  --bg-accent-secondary: #3a6cb8;
-
-  /* Hover states */
-  --dark-hover: hsla(0, 0%, 7%, .8);
-  --light-hover: hsla(40, 20%, 97%, .8);
-  --accent-primary-hover: #DCB781;
-  --accent-secondary-hover: #b83a6c;
-
+  --accent-dark: #ff763c;
+  --accent-light: #ff9e2d;
+  --accent: #ff6442;
+  --bg: #433f5a;
+  --l-fg-dark: #f6f6f6;
+  --l-fg: #ffffff;
+  --d-fg: #000000;
+  --secondary: #717171;
 }
 
 *,
@@ -34,7 +27,6 @@ body {
 body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
-
 }
 
 img,
@@ -66,16 +58,10 @@ h6 {
 /*----------  Basic styles  ----------*/
 
 body {
-  font-family: "Nunito", sans-serif;
-  background: var(--bg-light);
-  color: var(--fg-dark);
-}
+  background: var(--bg);
 
-h1 {
-  font-family: "Zen Os", sans-serif;
-  font-weight: 400;
-  font-size: 1.4rem;
-  margin-bottom: .3em;
+  font-family: "Nunito", sans-serif;
+  color: var(--l-fg);
 }
 
 h2,
@@ -93,112 +79,136 @@ h3 {
 
 .btn {
   display: inline-block;
+
+  border: 0.0625rem solid transparent;
+  border-radius: 0.5em;
+  background: transparent;
+
+  color: var(--btn-color);
+
+  transition: all 0.15s ease-in-out;
+
   -ms-touch-action: manipulation;
   touch-action: manipulation;
   cursor: pointer;
-  border: 1px solid transparent;
-  border-radius: 0.25rem;
-  transition: all 0.15s ease-in-out;
   -webkit-transition: all 0.15s ease-in-out;
-  background: transparent;
-  color: var(--btn-color);
 }
 
 .btn:hover {
   background: var(--btn-accent);
 }
 
-.btn:focus {
-  outline: 3px solid var(--btn-accent);
+.btn:focus-visible {
+  outline: 0.125rem solid var(--btn-accent);
 }
 
 .btn:active {
-  translate: 2px 2px;
+  translate: 0.125em 0.125em;
 }
-
 
 .submit-btn,
 .pay-btn {
-  --btn-color: var(--fg-light);
-  background: var(--bg-accent-secondary);
-  --btn-accent: var(--accent-secondary-hover);
-  font-weight: 700;
-  padding: 1em;
   width: 100%;
-  border-radius: .3em;
+  padding: 1em 2em;
+  background: var(--accent-dark);
+
+  font-weight: 700;
+
+  --btn-color: var(--l-fg);
+  --btn-accent: var(--accent);
 }
 
 .hidden {
   display: none;
 }
 
-
 /*----------  Layout  ----------*/
 
 .container {
   display: grid;
-  grid-template-rows: auto 1fr;
-  max-height: 100vh;
+  grid-template-areas: "header header header" "main main main" "main main main" "cart cart cart";
+
+  height: 100vh;
 }
 
 /*----------  Header  ----------*/
 
 .header {
-  background: linear-gradient(90deg,
-      rgba(31, 35, 46, 0.6) 0%,
-      rgba(31, 35, 46, 0.6) 100%),
-    center / cover no-repeat url(./bg.jpg);
-  padding: 1.5em;
-  text-align: center;
-  border-radius: 0 0 2em 2em;
+  display: flex;
+  grid-area: header;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 1em;
 }
 
+.view-cart {
+  position: relative;
 
-.page-title {
-  color: var(--fg-light);
+  padding: 1em;
 }
 
-.page-subtitle {
-  color: var(--accent-primary-hover)
+mark {
+  position: absolute;
+  right: -0.1em;
+  top: -0.1em;
+
+  padding: 0.3em;
+  border-radius: 50%;
+  background: var(--accent);
+
+  font-size: 0.7em;
+  color: var(--l-fg-dark);
+}
+
+.header img {
+  max-width: 2.5rem;
 }
 
 /*----------  App section  ----------*/
 .menu-section {
-  overflow-y: scroll;
-  margin: 1em 2.2em;
   display: grid;
-  row-gap: 2.2em;
+  grid-area: main;
+
+  margin: 0 2em 1em;
+  padding: 1em 1em 1.5em 0;
+
+  overflow-y: scroll;
+  row-gap: 2em;
 }
 
 .menu-section::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   border-radius: 1.5em;
-  visibility: hidden;
+
+  -webkit-box-shadow: inset 0 0 0.375rem rgba(0, 0, 0, 0.3);
 }
 
 .menu-section::-webkit-scrollbar {
-  width: 6px;
+  width: 0.375rem;
+  margin-left: 1em;
 }
 
 .menu-section::-webkit-scrollbar-thumb {
-  background-color: var(--bg-accent-primary);
   border-radius: 1.5em;
-  visibility: hidden;
 }
 
-.menu-section:hover::-webkit-scrollbar-track,
 .menu-section:hover::-webkit-scrollbar-thumb {
-  visibility: visible;
+  background-color: var(--accent-light);
 }
 
 /* Menu items */
 
 .menu-item {
   display: flex;
+
+  padding: 1em;
+  border-bottom: 0.0625rem solid var(--secondary);
+  border-radius: 1em;
+  background: var(--l-fg);
+
+  color: var(--d-fg);
+
   gap: 1em;
-  border-bottom: 1px solid var(--bg-accent-primary);
-  padding-bottom: 2em;
-  margin-right: .5rem;
 }
 
 .menu-item:last-child {
@@ -207,52 +217,60 @@ h3 {
 
 .emoji {
   font-size: 4em;
+
+  opacity: 0.8;
+
   line-height: 125%;
-  opacity: .8;
 }
 
 .ingredients {
-  color: var(--bg-accent-primary);
+  font-size: 0.8em;
+
+  opacity: 0.6;
 }
 
 .menu-item .price {
-  margin-top: .3em;
+  margin-top: 0.3em;
 }
 
 .text-content {
-  padding-right: 1em;
   flex: 1;
 }
 
 .add-btn {
-  cursor: pointer;
-  transition: all .3s linear;
+  display: flex;
+  align-items: center;
   align-self: start;
+  justify-content: center;
+
+  transition: all 0.3s linear;
+
+  cursor: pointer;
 }
 
 .add-btn.added {
-  transform: rotate(135deg);
+  transform: rotate(180deg);
+  transform-origin: center;
 }
 
 .add-btn.added .fa-plus {
-  color: var(--accent-secondary-hover);
+  color: var(--accent);
 }
 
 .add-btn.added .fa-circle {
-  color: var(--bg-accent-secondary);
+  color: var(--accent-dark);
 }
-
 
 /*----------  Your order section  ----------*/
 
-/* TODO: add a button minimizing the div  */
-
 .your-order {
-  align-self: end;
-  padding: 1.5em;
-  background: var(--bg-accent-primary);
-  color: var(--fg-dark);
-  border-radius: 2em 2em 0 0;
+  grid-area: cart;
+
+  padding: 1em 1.5em;
+  border-radius: 1em 1em 0 0;
+  background: var(--l-fg);
+
+  color: var(--d-fg);
 }
 
 .order-title {
@@ -266,7 +284,10 @@ h3 {
 .order-item {
   display: flex;
   align-items: center;
-  column-gap: .6em;
+
+  margin-bottom: 0.5em;
+
+  column-gap: 0.6em;
 }
 
 .your-order .price {
@@ -274,132 +295,150 @@ h3 {
 }
 
 .remove-btn {
-  --btn-color: var(--fg-light);
-  font-size: .8em;
+  --btn-color: var(--secondary);
+  font-size: 0.8em;
 }
 
 .remove-btn:hover {
-  color: var(--light-hover);
+  color: var(--accent);
 }
 
 .total {
-  border-top: 3px solid var(--accent-primary-hover);
   display: flex;
-  padding-block: .8em 1.5em;
+
+  border-top: 0.1875rem solid var(--accent-light);
+
+  padding-block: 0.8em 1.5em;
 }
 
+.total .price {
+  font-weight: 600;
+  color: var(--accent);
+}
 
 /*----------  Payment pop-up  ----------*/
 
 .bg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   position: fixed;
-  top: 0;
   left: 0;
   right: 0;
+  top: 0;
   bottom: 0;
   z-index: 100;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
+  background: hsl(249, 18%, 30%, 0.7);
 }
 
 .payment-popup {
-  background: var(--bg-light);
-  filter: drop-shadow(5.18654px 5.18654px 255.437px rgba(0, 0, 0, 0.5));
+  position: relative;
+
+  margin: 2em;
   padding: 1.8em 1.4em;
-  border-radius: .4em;
-  box-shadow: 0.3px 0.5px 0.7px hsla(0, 0%, 25%, 0.36),
-    0.8px 1.6px 2px -0.8px hsl(0, 0%, 25%, 0.36),
-    2.1px 4.1px 5.2px -1.7px hsl(0, 0%, 25%, 0.36),
-    5px 10px 12.6px -2.5px hsl(0, 0%, 25%, 0.36);
-  ;
+  border-radius: 0.5em;
+  background: var(--l-fg);
+
+  color: var(--d-fg);
+
+  filter: drop-shadow(0.3242rem 0.3242rem 15.9648rem rgba(0, 0, 0, 0.5));
+
+  box-shadow: 0.0187rem 0.0313rem 0.0437rem hsla(0, 0%, 25%, 0.36),
+    0.05rem 0.1rem 0.125rem -0.05rem hsl(0, 0%, 25%, 0.36),
+    0.1313rem 0.2562rem 0.325rem -0.1062rem hsl(0, 0%, 25%, 0.36),
+    0.3125rem 0.625rem 0.7875rem -0.1563rem hsl(0, 0%, 25%, 0.36);
+}
+
+#close-popup {
+  position: absolute;
+  right: 1.5em;
+  top: 1em;
+
+  padding-inline: 0.5em;
+  --btn-color: var(--accent);
+}
+
+#close-popup:active {
+  --btn-color: var(--accent-light);
 }
 
 .payment-title {
-  text-align: center;
   margin-bottom: 1.5em;
+
+  text-align: center;
 }
 
 .payment-form {
   display: grid;
-  gap: 1em;
   grid-auto-columns: minmax(10rem, 20rem);
+
+  gap: 1em;
 }
 
 .payment-form input {
-  border: 1px solid var(--bg-accent-primary);
-  padding: .5em;
+  padding: 0.5em;
+  border: 0.125em solid var(--accent-light);
+  border-radius: 0.5em;
+  background: var(--l-fg-dark);
 }
 
 .payment-form input:focus {
-  outline-color: var(--bg-accent-secondary);
+  outline-color: var(--accent);
 }
 
 .payment-form input::placeholder {
-  color: var(--accent-primary-hover);
-  font-size: .9em;
+  font-size: 0.9em;
+  color: var(--secondary);
 }
 
 .pay-btn {
   margin-top: 1.5em;
 }
 
-
 /*----------  Thank you pop-up  ----------*/
 
 .thankyou-popup {
-  margin: 2.2em auto;
-  background: var(--bg-accent-secondary);
-  color: var(--fg-light);
-  padding: 1.5em 2em;
   width: fit-content;
+  margin: 2.2em auto;
+  padding: 1.5em 2em;
+  border-radius: 0.3em;
+  background: var(--bg-accent-secondary);
+
   text-align: center;
-  border-radius: .3em;
+  color: var(--l-fg-light);
 }
 
 /*----------  Desktop version  ----------*/
 
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 43.75rem) {
   body {
     display: grid;
     place-content: center;
   }
 
-  h1 {
-    font-size: 2rem;
-  }
-
   .container {
-    height: auto;
-    min-height: 0;
-    max-height: 50rem;
-    grid-template-columns: auto minmax(25rem, 45rem);
-    grid-template-rows: auto 1fr auto;
-    margin: 2rem;
-    border-radius: 2rem;
-    box-shadow: 0.3px 0.5px 0.7px hsl(0deg 0% 63% / 0.34),
-      1.5px 2.9px 3.7px -0.4px hsl(0deg 0% 63% / 0.34),
-      2.7px 5.4px 6.8px -0.7px hsl(0deg 0% 63% / 0.34),
-      4.5px 8.9px 11.2px -1.1px hsl(0deg 0% 63% / 0.34),
-      7.1px 14.3px 18px -1.4px hsl(0deg 0% 63% / 0.34),
-      11.2px 22.3px 28.1px -1.8px hsl(0deg 0% 63% / 0.34),
-      17px 33.9px 42.7px -2.1px hsl(0deg 0% 63% / 0.34),
-      25px 50px 62.9px -2.5px hsl(0deg 0% 63% / 0.34);
+    grid-template-areas:
+      "header header header"
+      "main main cart"
+      "main main cart"
+      "main main cart";
+    padding: 1.5em;
+    column-gap: 1em;
+    grid-template-columns: auto auto minmax(min-content, 20em);
   }
 
   .header {
-    border-radius: 2em 0 0 2em;
-    grid-row: 1 / span 3;
+    padding-block: 0.5em;
   }
 
   .your-order {
-    grid-row: 3;
-    border-radius: 2em 2em 2em 0;
+    border-radius: 1em;
   }
 
-  .submit-btn {
-    width: fit-content;
-    display: block;
-    margin: 0 auto;
+  .menu-section {
+    margin-inline: 0;
+    padding-block: 0;
   }
 }
