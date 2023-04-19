@@ -8,18 +8,31 @@ function handleClickEvent(e) {
   const target = e.target
   const targetParent = target.parentNode
 
-  console.log(target.id)
-
+  // Add items to order
   // Targetting both the button div and the icon within it
   if (target.dataset.add || targetParent.dataset.add) {
     const id = target.dataset.add || targetParent.dataset.add
     handleOrder(id, "add")
-    // Trigger animation
-  } else if (target.dataset.remove) {
+  }
+  // Remove items from order
+  else if (target.dataset.remove) {
     handleOrder(target.dataset.remove, "remove")
-  } else if (target.id === "submit-btn") {
+  }
+  // Show payment popup
+  else if (target.id === "submit-btn") {
     renderPayment()
   }
+  // Close payment popup
+  else if (target.id === "close-popup" || targetParent.id === "close-popup") {
+    document.querySelector("#payment-section").classList.add("hidden")
+  }
+}
+
+// Process form submission
+function handlePayment() {
+  const formData = new FormData(document.getElementById("payment-form"))
+  document.querySelector("#payment-section").classList.add("hidden")
+  console.log(formData)
 }
 
 // Add or remove items from cart
@@ -46,13 +59,14 @@ function handleOrder(itemId, action) {
   renderOrder()
 }
 
+// Get total amount
+function getTotal() {
+  return orderArray.reduce((acc, curr) => acc + curr.quantity * curr.price, 0)
+}
+
 // Get items count
 function getCartCount() {
-  let cartCount = 0
-  orderArray.forEach(item => {
-    cartCount += item.quantity
-  })
-  return cartCount
+  return orderArray.reduce((acc, curr) => acc + curr.quantity, 0)
 }
 
 // Update cart notif
@@ -72,10 +86,6 @@ function updateCartIcon() {
 function getOrderHTML(orderArray) {
   if (orderArray.length > 0) {
     let orderItems = ""
-    const total = orderArray.reduce(
-      (acc, curr) => acc + curr.quantity * curr.price,
-      0
-    )
 
     orderArray.forEach(item => {
       const { name, price, quantity, id } = item
@@ -97,7 +107,7 @@ function getOrderHTML(orderArray) {
 
     <div class="total">
       <h3 class="total-title">Total price:</h3>
-      <p class="price" id="total">ᖬ${total}</p>
+      <p class="price" id="total">ᖬ${getTotal()}</p>
     </div>
     <button class="btn submit-btn" id="submit-btn">Complete order</button>
   `
@@ -131,11 +141,6 @@ function getMenuHTML(menuArray) {
 }
 
 function getPaymentHTML() {
-  const total = orderArray.reduce(
-    (acc, curr) => acc + curr.quantity * curr.price,
-    0
-  )
-
   return `
    <div class="payment-popup">
         <div
@@ -145,7 +150,7 @@ function getPaymentHTML() {
           <i class="fa-solid fa-xmark"></i>
         </div>
         <h2 class="payment-title">Enter card details</h2>
-        <form class="payment-form">
+        <form class="payment-form" id="payment-form">
           <input
             required
             type="text"
@@ -177,9 +182,10 @@ function getPaymentHTML() {
           />
           <button
             class="btn pay-btn"
+            id="pay-btn"
             type="submit"
           >
-            Pay ᖬ${total}
+            Pay ᖬ${getTotal()}
           </button>
         </form>
       </div>
@@ -199,11 +205,17 @@ function renderPayment() {
   document.querySelector("#payment-section").innerHTML = getPaymentHTML()
 }
 
+document.addEventListener("click", handleClickEvent)
+
+document.getElementById("payment-form") &&
+  document.getElementById("payment-form").addEventListener("submit", e => {
+    e.preventDefault()
+    handlePayment()
+  })
+
 // Functions to fire on page load
 window.addEventListener("DOMContentLoaded", () => {
   renderMenu()
   renderOrder()
   updateCartIcon()
 })
-
-document.addEventListener("click", handleClickEvent)
