@@ -58,8 +58,9 @@ h6 {
 /*----------  Basic styles  ----------*/
 
 body {
-  font-family: "Nunito", sans-serif;
   background: var(--bg);
+
+  font-family: "Nunito", sans-serif;
   color: var(--l-fg);
 }
 
@@ -78,15 +79,19 @@ h3 {
 
 .btn {
   display: inline-block;
+
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  background: transparent;
+
+  color: var(--btn-color);
+
+  transition: all 0.15s ease-in-out;
+
   -ms-touch-action: manipulation;
   touch-action: manipulation;
   cursor: pointer;
-  border: 1px solid transparent;
-  border-radius: 0.25rem;
-  transition: all 0.15s ease-in-out;
   -webkit-transition: all 0.15s ease-in-out;
-  background: transparent;
-  color: var(--btn-color);
 }
 
 .btn:hover {
@@ -103,13 +108,15 @@ h3 {
 
 .submit-btn,
 .pay-btn {
-  --btn-color: var(--l-fg);
-  background: var(--accent-dark);
-  --btn-accent: var(--accent);
-  font-weight: 700;
-  padding: 1em;
   width: 100%;
+  padding: 1em;
   border-radius: 0.3em;
+  background: var(--accent-dark);
+
+  font-weight: 700;
+
+  --btn-color: var(--l-fg);
+  --btn-accent: var(--accent);
 }
 
 .hidden {
@@ -120,37 +127,38 @@ h3 {
 
 .container {
   display: grid;
-  grid-template-areas:
-    "header header header"
-    "main main main"
-    "main main main"
-    "cart cart cart";
+  grid-template-areas: "header header header" "main main main" "main main main" "cart cart cart";
+
   height: 100vh;
 }
 
 /*----------  Header  ----------*/
 
 .header {
-  grid-area: header;
   display: flex;
-  justify-content: space-between;
+  grid-area: header;
   align-items: center;
+  justify-content: space-between;
+
   padding: 1em;
 }
 
 .view-cart {
-  padding: 1em;
   position: relative;
+
+  padding: 1em;
 }
 
 mark {
   position: absolute;
-  font-size: 0.7em;
-  top: -0.1em;
   right: -0.1em;
+  top: -0.1em;
+
   padding: 0.3em;
   border-radius: 50%;
   background: var(--accent);
+
+  font-size: 0.7em;
   color: var(--l-fg-dark);
 }
 
@@ -158,24 +166,22 @@ mark {
   max-width: 2.5rem;
 }
 
-.cart-logo {
-  cursor: pointer;
-}
-
 /*----------  App section  ----------*/
 .menu-section {
-  overflow-y: scroll;
-  margin-inline: 2em;
-  padding: 1em 1em 1.5em 0;
   display: grid;
-  row-gap: 2em;
   grid-area: main;
+
+  margin: 0 2em 1em;
+  padding: 1em 1em 1.5em 0;
+
+  overflow-y: scroll;
+  row-gap: 2em;
 }
 
 .menu-section::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   border-radius: 1.5em;
-  visibility: hidden;
+
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
 }
 
 .menu-section::-webkit-scrollbar {
@@ -184,26 +190,26 @@ mark {
 }
 
 .menu-section::-webkit-scrollbar-thumb {
-  background-color: var(--accent-light);
   border-radius: 1.5em;
-  visibility: hidden;
 }
 
-.menu-section:hover::-webkit-scrollbar-track,
 .menu-section:hover::-webkit-scrollbar-thumb {
-  visibility: visible;
+  background-color: var(--accent-light);
 }
 
 /* Menu items */
 
 .menu-item {
   display: flex;
-  gap: 1em;
-  border-bottom: 1px solid var(--secondary);
+
   padding: 1em;
-  background: var(--l-fg);
-  color: var(--d-fg);
+  border-bottom: 1px solid var(--secondary);
   border-radius: 1em;
+  background: var(--l-fg);
+
+  color: var(--d-fg);
+
+  gap: 1em;
 }
 
 .menu-item:last-child {
@@ -212,12 +218,15 @@ mark {
 
 .emoji {
   font-size: 4em;
-  line-height: 125%;
+
   opacity: 0.8;
+
+  line-height: 125%;
 }
 
 .ingredients {
   font-size: 0.8em;
+
   opacity: 0.6;
 }
 
@@ -230,17 +239,19 @@ mark {
 }
 
 .add-btn {
-  cursor: pointer;
-  transition: all 0.3s linear;
-  align-self: start;
   display: flex;
-  justify-content: center;
   align-items: center;
+  align-self: start;
+  justify-content: center;
+
+  transition: all 0.3s linear;
+
+  cursor: pointer;
 }
 
 .add-btn.added {
-  transform-origin: center;
   transform: rotate(180deg);
+  transform-origin: center;
 }
 
 .add-btn.added .fa-plus {
@@ -257,10 +268,12 @@ mark {
 
 .your-order {
   grid-area: cart;
+
   padding: 1em 1.5em;
-  background: var(--l-fg);
-  color: var(--d-fg);
   border-radius: 1em 1em 0 0;
+  background: var(--l-fg);
+
+  color: var(--d-fg);
 }
 
 .order-title {
@@ -274,6 +287,7 @@ mark {
 .order-item {
   display: flex;
   align-items: center;
+
   column-gap: 0.6em;
 }
 
@@ -291,37 +305,44 @@ mark {
 }
 
 .total {
-  border-top: 3px solid var(--accent-light);
   display: flex;
+
+  border-top: 3px solid var(--accent-light);
+
   padding-block: 0.8em 1.5em;
 }
 
 .total .price {
-  color: var(--accent);
   font-weight: 600;
+  color: var(--accent);
 }
 
 /*----------  Payment pop-up  ----------*/
 
 .bg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   position: fixed;
-  top: 0;
   left: 0;
   right: 0;
+  top: 0;
   bottom: 0;
   z-index: 100;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
   background: hsl(249, 18%, 30%, 0.7);
 }
 
 .payment-popup {
-  background: var(--l-fg-dark);
-  color: var(--d-fg);
-  filter: drop-shadow(5.18654px 5.18654px 255.437px rgba(0, 0, 0, 0.5));
   padding: 1.8em 1.4em;
   border-radius: 0.4em;
+  background: var(--l-fg-dark);
+
+  color: var(--d-fg);
+
+  filter: drop-shadow(5.18654px 5.18654px 255.437px rgba(0, 0, 0, 0.5));
+
   box-shadow: 0.3px 0.5px 0.7px hsla(0, 0%, 25%, 0.36),
     0.8px 1.6px 2px -0.8px hsl(0, 0%, 25%, 0.36),
     2.1px 4.1px 5.2px -1.7px hsl(0, 0%, 25%, 0.36),
@@ -329,19 +350,21 @@ mark {
 }
 
 .payment-title {
-  text-align: center;
   margin-bottom: 1.5em;
+
+  text-align: center;
 }
 
 .payment-form {
   display: grid;
-  gap: 1em;
   grid-auto-columns: minmax(10rem, 20rem);
+
+  gap: 1em;
 }
 
 .payment-form input {
-  border: 1px solid var(--bg-accent-primary);
   padding: 0.5em;
+  border: 1px solid var(--bg-accent-primary);
 }
 
 .payment-form input:focus {
@@ -349,8 +372,8 @@ mark {
 }
 
 .payment-form input::placeholder {
-  color: var(--accent-primary-hover);
   font-size: 0.9em;
+  color: var(--accent-primary-hover);
 }
 
 .pay-btn {
@@ -360,18 +383,19 @@ mark {
 /*----------  Thank you pop-up  ----------*/
 
 .thankyou-popup {
-  margin: 2.2em auto;
-  background: var(--bg-accent-secondary);
-  color: var(--l-fg-light);
-  padding: 1.5em 2em;
   width: fit-content;
-  text-align: center;
+  margin: 2.2em auto;
+  padding: 1.5em 2em;
   border-radius: 0.3em;
+  background: var(--bg-accent-secondary);
+
+  text-align: center;
+  color: var(--l-fg-light);
 }
 
 /*----------  Desktop version  ----------*/
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 700px) {
   body {
     display: grid;
     place-content: center;
@@ -385,6 +409,7 @@ mark {
       "main main cart";
     padding: 1.5em;
     column-gap: 1em;
+    grid-template-columns: auto auto minmax(min-content, 20em);
   }
 
   .header {
