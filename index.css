@@ -80,8 +80,8 @@ h3 {
 .btn {
   display: inline-block;
 
-  border: 1px solid transparent;
-  border-radius: 0.25rem;
+  border: 0.0625rem solid transparent;
+  border-radius: 0.5em;
   background: transparent;
 
   color: var(--btn-color);
@@ -98,19 +98,18 @@ h3 {
   background: var(--btn-accent);
 }
 
-.btn:focus {
-  outline: 3px solid var(--btn-accent);
+.btn:focus-visible {
+  outline: 0.125rem solid var(--btn-accent);
 }
 
 .btn:active {
-  translate: 2px 2px;
+  translate: 0.125em 0.125em;
 }
 
 .submit-btn,
 .pay-btn {
   width: 100%;
-  padding: 1em;
-  border-radius: 0.3em;
+  padding: 1em 2em;
   background: var(--accent-dark);
 
   font-weight: 700;
@@ -181,11 +180,11 @@ mark {
 .menu-section::-webkit-scrollbar-track {
   border-radius: 1.5em;
 
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: inset 0 0 0.375rem rgba(0, 0, 0, 0.3);
 }
 
 .menu-section::-webkit-scrollbar {
-  width: 6px;
+  width: 0.375rem;
   margin-left: 1em;
 }
 
@@ -203,7 +202,7 @@ mark {
   display: flex;
 
   padding: 1em;
-  border-bottom: 1px solid var(--secondary);
+  border-bottom: 0.0625rem solid var(--secondary);
   border-radius: 1em;
   background: var(--l-fg);
 
@@ -264,8 +263,6 @@ mark {
 
 /*----------  Your order section  ----------*/
 
-/* TODO: add a button minimizing the div  */
-
 .your-order {
   grid-area: cart;
 
@@ -288,6 +285,8 @@ mark {
   display: flex;
   align-items: center;
 
+  margin-bottom: 0.5em;
+
   column-gap: 0.6em;
 }
 
@@ -307,7 +306,7 @@ mark {
 .total {
   display: flex;
 
-  border-top: 3px solid var(--accent-light);
+  border-top: 0.1875rem solid var(--accent-light);
 
   padding-block: 0.8em 1.5em;
 }
@@ -336,17 +335,17 @@ mark {
 
 .payment-popup {
   padding: 1.8em 1.4em;
-  border-radius: 0.4em;
-  background: var(--l-fg-dark);
+  border-radius: 0.5em;
+  background: var(--l-fg);
 
   color: var(--d-fg);
 
-  filter: drop-shadow(5.18654px 5.18654px 255.437px rgba(0, 0, 0, 0.5));
+  filter: drop-shadow(0.3242rem 0.3242rem 15.9648rem rgba(0, 0, 0, 0.5));
 
-  box-shadow: 0.3px 0.5px 0.7px hsla(0, 0%, 25%, 0.36),
-    0.8px 1.6px 2px -0.8px hsl(0, 0%, 25%, 0.36),
-    2.1px 4.1px 5.2px -1.7px hsl(0, 0%, 25%, 0.36),
-    5px 10px 12.6px -2.5px hsl(0, 0%, 25%, 0.36);
+  box-shadow: 0.0187rem 0.0313rem 0.0437rem hsla(0, 0%, 25%, 0.36),
+    0.05rem 0.1rem 0.125rem -0.05rem hsl(0, 0%, 25%, 0.36),
+    0.1313rem 0.2562rem 0.325rem -0.1062rem hsl(0, 0%, 25%, 0.36),
+    0.3125rem 0.625rem 0.7875rem -0.1563rem hsl(0, 0%, 25%, 0.36);
 }
 
 .payment-title {
@@ -364,16 +363,18 @@ mark {
 
 .payment-form input {
   padding: 0.5em;
-  border: 1px solid var(--bg-accent-primary);
+  border: 0.125em solid var(--accent-light);
+  border-radius: 0.5em;
+  background: var(--l-fg-dark);
 }
 
 .payment-form input:focus {
-  outline-color: var(--bg-accent-secondary);
+  outline-color: var(--accent);
 }
 
 .payment-form input::placeholder {
   font-size: 0.9em;
-  color: var(--accent-primary-hover);
+  color: var(--secondary);
 }
 
 .pay-btn {
@@ -395,7 +396,7 @@ mark {
 
 /*----------  Desktop version  ----------*/
 
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 43.75rem) {
   body {
     display: grid;
     place-content: center;
