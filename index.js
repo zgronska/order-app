@@ -115,7 +115,7 @@ function renderOrder() {
   if (orderArray.length > 0) {
     orderSection.classList.remove("hidden")
   } else {
-    orderSection.classList.add("hidden")
+    // orderSection.classList.add("hidden")
   }
 }
 

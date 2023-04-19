@@ -52,13 +52,17 @@
             src="./SVGs/Star_Wars_R2D2.svg"
             class="cart-logo"
           />
-          <mark id="cart-count">23</mark>
+          <mark
+            id="cart-count"
+            class="hidden"
+            >23</mark
+          >
         </div>
       </header>
       <section class="menu-section">
         <!-- Menu items -->
       </section>
-      <section class="your-order hidden"></section>
+      <section class="your-order"></section>
       <!-- <div class="thankyou-popup">
         <h2 class="thankyou-title">Thank you for your order!</h2>
         <p class="thankyou-text">
@@ -66,13 +70,21 @@
         </p>
       </div> -->
     </div>
-    <div class="bg">
+    <!-- <div class="bg">
       <div class="payment-popup">
+        <div
+          id="close-popup"
+          class="btn"
+        >
+          <i class="fa-solid fa-xmark"></i>
+        </div>
         <h2 class="payment-title">Enter card details</h2>
         <form class="payment-form">
           <input
             required
             type="text"
+            pattern="[A-Za-z\s]{3,}"
+            autocomplete="cc-name"
             name="name"
             id="payment-name"
             placeholder="Enter your name"
@@ -80,8 +92,9 @@
           <input
             required
             type="tel"
-            pattern="\d*"
-            maxlength="19"
+            inputmode="numeric"
+            pattern="[0-9\s]{13,19}"
+            autocomplete="cc-number"
             name="card"
             id="payment-card"
             placeholder="Enter card number"
@@ -89,8 +102,9 @@
           <input
             required
             type="tel"
-            pattern="\d*"
-            maxlength="4"
+            inputmode="numeric"
+            pattern="[0-9\s]{3,4}"
+            autocomplete="cc-csc"
             name="cvv"
             id="payment-cvv"
             placeholder="Enter CVV"
@@ -103,7 +117,7 @@
           </button>
         </form>
       </div>
-    </div>
+    </div> -->
 
     <script
       src="./index.js"

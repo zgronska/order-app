@@ -334,6 +334,9 @@ mark {
 }
 
 .payment-popup {
+  position: relative;
+
+  margin: 2em;
   padding: 1.8em 1.4em;
   border-radius: 0.5em;
   background: var(--l-fg);
@@ -346,6 +349,19 @@ mark {
     0.05rem 0.1rem 0.125rem -0.05rem hsl(0, 0%, 25%, 0.36),
     0.1313rem 0.2562rem 0.325rem -0.1062rem hsl(0, 0%, 25%, 0.36),
     0.3125rem 0.625rem 0.7875rem -0.1563rem hsl(0, 0%, 25%, 0.36);
+}
+
+#close-popup {
+  position: absolute;
+  right: 1.5em;
+  top: 1em;
+
+  padding-inline: 0.5em;
+  --btn-color: var(--accent);
+}
+
+#close-popup:active {
+  --btn-color: var(--accent-light);
 }
 
 .payment-title {
