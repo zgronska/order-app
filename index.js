@@ -43,8 +43,7 @@ function handleClickEvent(e) {
 // Remove everything from order
 function clearCart() {
   orderArray.length = 0
-  updateCartIcon()
-  localStorage.setItem("orderArray", JSON.stringify(orderArray))
+
   renderOrder()
 }
 
@@ -75,8 +74,7 @@ function handleOrder(itemId, action) {
       orderArray.splice(orderArray.indexOf(existingItem), 1)
     }
   }
-  updateCartIcon()
-  localStorage.setItem("orderArray", JSON.stringify(orderArray))
+
   renderOrder()
 }
 
@@ -177,6 +175,8 @@ function renderMenu() {
 
 function renderOrder() {
   get("sidebar").innerHTML = getOrderHTML(orderArray)
+  updateCartIcon()
+  localStorage.setItem("orderArray", JSON.stringify(orderArray))
 }
 
 function renderPayment() {
