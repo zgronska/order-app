@@ -59,18 +59,21 @@
           >
         </div>
       </header>
-      <section class="menu-section">
+      <section
+        class="menu-section"
+        id="menu-section"
+      >
         <!-- Menu items -->
       </section>
-      <section class="your-order"></section>
-      <!-- <div class="thankyou-popup">
-        <h2 class="thankyou-title">Thank you for your order!</h2>
-        <p class="thankyou-text">
-          Our courier is rushing to you on their speeder! ⚡
-        </p>
-      </div> -->
+      <section
+        class="your-order"
+        id="sidebar"
+      ></section>
     </div>
-    <!-- <div class="bg">
+    <div
+      class="bg hidden"
+      id="payment-section"
+    >
       <div class="payment-popup">
         <div
           id="close-popup"
@@ -79,7 +82,10 @@
           <i class="fa-solid fa-xmark"></i>
         </div>
         <h2 class="payment-title">Enter card details</h2>
-        <form class="payment-form">
+        <form
+          class="payment-form"
+          id="payment-form"
+        >
           <input
             required
             type="text"
@@ -95,6 +101,8 @@
             inputmode="numeric"
             pattern="[0-9\s]{13,19}"
             autocomplete="cc-number"
+            minlength="13"
+            maxlength="19"
             name="card"
             id="payment-card"
             placeholder="Enter card number"
@@ -107,17 +115,20 @@
             autocomplete="cc-csc"
             name="cvv"
             id="payment-cvv"
+            minlength="3"
+            maxlength="4"
             placeholder="Enter CVV"
           />
           <button
             class="btn pay-btn"
+            id="pay-btn"
             type="submit"
           >
             Pay
           </button>
         </form>
       </div>
-    </div> -->
+    </div>
 
     <script
       src="./index.js"

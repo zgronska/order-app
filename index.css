@@ -98,8 +98,9 @@ h3 {
   background: var(--btn-accent);
 }
 
-.btn:focus-visible {
-  outline: 0.125rem solid var(--btn-accent);
+.btn:focus {
+  outline: none;
+  background: var(--btn-accent);
 }
 
 .btn:active {
@@ -118,15 +119,25 @@ h3 {
   --btn-accent: var(--accent);
 }
 
+.submit-btn:focus,
+.pay-btn:focus {
+  outline: 2px solid var(--accent-light);
+}
+
 .hidden {
   display: none;
+  visibility: hidden;
 }
 
 /*----------  Layout  ----------*/
 
 .container {
   display: grid;
-  grid-template-areas: "header header header" "main main main" "main main main" "cart cart cart";
+  grid-template-areas:
+    "header header header"
+    "main main main"
+    "main main main"
+    "cart cart cart";
 
   height: 100vh;
 }
@@ -139,25 +150,25 @@ h3 {
   align-items: center;
   justify-content: space-between;
 
-  padding: 1em;
+  margin: 2em 2em 1em 2em;
 }
 
 .view-cart {
   position: relative;
-
-  padding: 1em;
 }
 
-mark {
+#cart-count {
   position: absolute;
-  right: -0.1em;
-  top: -0.1em;
+  right: -1.5em;
+  top: -1.5em;
 
+  min-width: 2em;
   padding: 0.3em;
   border-radius: 50%;
   background: var(--accent);
 
   font-size: 0.7em;
+  text-align: center;
   color: var(--l-fg-dark);
 }
 
@@ -243,22 +254,11 @@ mark {
   align-self: start;
   justify-content: center;
 
-  transition: all 0.3s linear;
-
   cursor: pointer;
 }
 
-.add-btn.added {
-  transform: rotate(180deg);
-  transform-origin: center;
-}
-
-.add-btn.added .fa-plus {
+.add-btn:focus {
   color: var(--accent);
-}
-
-.add-btn.added .fa-circle {
-  color: var(--accent-dark);
 }
 
 /*----------  Your order section  ----------*/
@@ -270,11 +270,12 @@ mark {
   border-radius: 1em 1em 0 0;
   background: var(--l-fg);
 
+  text-align: center;
   color: var(--d-fg);
 }
 
-.order-title {
-  text-align: center;
+.empty-cart {
+  color: var(--secondary);
 }
 
 .order-items {
@@ -410,6 +411,10 @@ mark {
   color: var(--l-fg-light);
 }
 
+.thankyou-title {
+  margin-bottom: 0.5em;
+}
+
 /*----------  Desktop version  ----------*/
 
 @media screen and (min-width: 43.75rem) {
@@ -424,13 +429,14 @@ mark {
       "main main cart"
       "main main cart"
       "main main cart";
-    padding: 1.5em;
+    padding: 2em;
     column-gap: 1em;
     grid-template-columns: auto auto minmax(min-content, 20em);
   }
 
   .header {
     padding-block: 0.5em;
+    margin: 0 1em 1em;
   }
 
   .your-order {
