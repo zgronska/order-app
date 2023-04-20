@@ -28,7 +28,9 @@ function handleClickEvent(e) {
   // Close payment popup
   else if (target.id === "close-popup" || targetParent.id === "close-popup") {
     get("payment-form").classList.add("hidden")
-  } else if (target.id === "pay-btn") {
+  }
+  // Process payment
+  else if (target.id === "pay-btn") {
     e.preventDefault()
     if (get("payment-form").checkValidity()) {
       handlePayment()
@@ -42,9 +44,7 @@ function handleClickEvent(e) {
 function handlePayment() {
   const formData = new FormData(get("payment-form"))
   get("payment-section").classList.add("hidden")
-  for (var [key, value] of formData.entries()) {
-    console.log(key, value)
-  }
+  renderThankYou(formData.get("name"))
 }
 
 // Add or remove items from cart
@@ -152,12 +152,24 @@ function getMenuHTML(menuArray) {
     .join("")
 }
 
+// Render Thank You note
+function renderThankYou(name) {
+  get("sidebar").innerHTML = `
+      <div class="thankyou-popup">
+        <h2 class="thankyou-title">Thank you for your order, ${name}!</h2>
+        <p class="thankyou-text">
+          Our courier is rushing to you on their speeder! ⚡
+        </p>
+      </div>
+  `
+}
+
 function renderMenu() {
-  document.querySelector(".menu-section").innerHTML = getMenuHTML(menuArray)
+  get("menu-section").innerHTML = getMenuHTML(menuArray)
 }
 
 function renderOrder() {
-  document.querySelector(".your-order").innerHTML = getOrderHTML(orderArray)
+  get("sidebar").innerHTML = getOrderHTML(orderArray)
 }
 
 function renderPayment() {
