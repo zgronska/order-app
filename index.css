@@ -150,19 +150,17 @@ h3 {
   align-items: center;
   justify-content: space-between;
 
-  padding: 1em;
+  margin: 2em 2em 1em 2em;
 }
 
 .view-cart {
   position: relative;
-
-  padding: 1em;
 }
 
 #cart-count {
   position: absolute;
-  right: -0.1em;
-  top: -0.1em;
+  right: -1.5em;
+  top: -1.5em;
 
   min-width: 2em;
   padding: 0.3em;
@@ -413,6 +411,10 @@ h3 {
   color: var(--l-fg-light);
 }
 
+.thankyou-title {
+  margin-bottom: 0.5em;
+}
+
 /*----------  Desktop version  ----------*/
 
 @media screen and (min-width: 43.75rem) {
@@ -427,13 +429,14 @@ h3 {
       "main main cart"
       "main main cart"
       "main main cart";
-    padding: 1.5em;
+    padding: 2em;
     column-gap: 1em;
     grid-template-columns: auto auto minmax(min-content, 20em);
   }
 
   .header {
     padding-block: 0.5em;
+    margin: 0 1em 1em;
   }
 
   .your-order {

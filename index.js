@@ -27,7 +27,7 @@ function handleClickEvent(e) {
   }
   // Close payment popup
   else if (target.id === "close-popup" || targetParent.id === "close-popup") {
-    get("payment-form").classList.add("hidden")
+    get("payment-section").classList.add("hidden")
   }
   // Process payment
   else if (target.id === "pay-btn") {
@@ -40,10 +40,19 @@ function handleClickEvent(e) {
   }
 }
 
+// Remove everything from order
+function clearCart() {
+  orderArray.length = 0
+  updateCartIcon()
+  localStorage.setItem("orderArray", JSON.stringify(orderArray))
+  renderOrder()
+}
+
 // Process form submission
 function handlePayment() {
   const formData = new FormData(get("payment-form"))
   get("payment-section").classList.add("hidden")
+  clearCart()
   renderThankYou(formData.get("name"))
 }
 
