@@ -97,32 +97,30 @@ function updateCartIcon() {
 // Render cart section
 function getOrderHTML(orderArray) {
   if (orderArray.length > 0) {
-    let orderItems = ""
-
-    orderArray.forEach(item => {
-      const { name, price, quantity, id } = item
-
-      orderItems += `
-      <div class="order-item" id="order-${id}">
-      <h3 class="item-title">${name}</h3> <span>x ${quantity}</span>
-      <button class="btn remove-btn" data-remove=${id}>remove</button>
-      <p class="price">ᖬ${price}</p>
-    </div>
+    const orderItems = orderArray
+      .map(({ name, price, quantity, id }) => {
+        return `
+          <div class="order-item" id="order-${id}">
+              <h3 class="item-title">${name}</h3> <span>x ${quantity}</span>
+              <button class="btn remove-btn" data-remove=${id}>remove</button>
+              <p class="price">ᖬ${price}</p>
+          </div>
       `
-    })
+      })
+      .join("")
 
     return `
-    <h2 class="order-title">Your order</h2>
-    <div class="order-items">
-      ${orderItems}
-    </div>
+          <h2 class="order-title">Your order</h2>
+          <div class="order-items">
+            ${orderItems}
+          </div>
 
-    <div class="total">
-      <h3 class="total-title">Total price:</h3>
-      <p class="price" id="total">ᖬ${getTotal()}</p>
-    </div>
-    <button class="btn submit-btn" id="submit-btn">Complete order</button>
-  `
+          <div class="total">
+            <h3 class="total-title">Total price:</h3>
+            <p class="price" id="total">ᖬ${getTotal()}</p>
+          </div>
+          <button class="btn submit-btn" id="submit-btn">Complete order</button>
+        `
   } else {
     return `<p class="empty-cart">Your cart is empty.</p>`
   }
