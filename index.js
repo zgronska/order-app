@@ -1,5 +1,8 @@
 import { menuArray } from "/data.js"
 
+// Utility
+const get = element => document.getElementById(element)
+
 // Define array of items in cart
 const orderArray = JSON.parse(localStorage.getItem("orderArray")) || []
 
@@ -24,15 +27,24 @@ function handleClickEvent(e) {
   }
   // Close payment popup
   else if (target.id === "close-popup" || targetParent.id === "close-popup") {
-    document.querySelector("#payment-section").classList.add("hidden")
+    get("payment-form").classList.add("hidden")
+  } else if (target.id === "pay-btn") {
+    e.preventDefault()
+    if (get("payment-form").checkValidity()) {
+      handlePayment()
+    } else {
+      get("payment-form").reportValidity()
+    }
   }
 }
 
 // Process form submission
 function handlePayment() {
-  const formData = new FormData(document.getElementById("payment-form"))
-  document.querySelector("#payment-section").classList.add("hidden")
-  console.log(formData)
+  const formData = new FormData(get("payment-form"))
+  get("payment-section").classList.add("hidden")
+  for (var [key, value] of formData.entries()) {
+    console.log(key, value)
+  }
 }
 
 // Add or remove items from cart
@@ -71,7 +83,7 @@ function getCartCount() {
 
 // Update cart notif
 function updateCartIcon() {
-  const cartNotif = document.getElementById("cart-count")
+  const cartNotif = get("cart-count")
   const cartCount = getCartCount()
 
   if (cartCount === 0) {
@@ -140,58 +152,6 @@ function getMenuHTML(menuArray) {
     .join("")
 }
 
-function getPaymentHTML() {
-  return `
-   <div class="payment-popup">
-        <div
-          id="close-popup"
-          class="btn"
-        >
-          <i class="fa-solid fa-xmark"></i>
-        </div>
-        <h2 class="payment-title">Enter card details</h2>
-        <form class="payment-form" id="payment-form">
-          <input
-            required
-            type="text"
-            pattern="[A-Za-z\s]{3,}"
-            autocomplete="cc-name"
-            name="name"
-            id="payment-name"
-            placeholder="Enter your name"
-          />
-          <input
-            required
-            type="tel"
-            inputmode="numeric"
-            pattern="[0-9\s]{13,19}"
-            autocomplete="cc-number"
-            name="card"
-            id="payment-card"
-            placeholder="Enter card number"
-          />
-          <input
-            required
-            type="tel"
-            inputmode="numeric"
-            pattern="[0-9\s]{3,4}"
-            autocomplete="cc-csc"
-            name="cvv"
-            id="payment-cvv"
-            placeholder="Enter CVV"
-          />
-          <button
-            class="btn pay-btn"
-            id="pay-btn"
-            type="submit"
-          >
-            Pay ᖬ${getTotal()}
-          </button>
-        </form>
-      </div>
-  `
-}
-
 function renderMenu() {
   document.querySelector(".menu-section").innerHTML = getMenuHTML(menuArray)
 }
@@ -201,17 +161,10 @@ function renderOrder() {
 }
 
 function renderPayment() {
-  document.querySelector("#payment-section").classList.remove("hidden")
-  document.querySelector("#payment-section").innerHTML = getPaymentHTML()
+  get("payment-section").classList.remove("hidden")
 }
 
 document.addEventListener("click", handleClickEvent)
-
-document.getElementById("payment-form") &&
-  document.getElementById("payment-form").addEventListener("submit", e => {
-    e.preventDefault()
-    handlePayment()
-  })
 
 // Functions to fire on page load
 window.addEventListener("DOMContentLoaded", () => {

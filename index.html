@@ -73,7 +73,62 @@
     <div
       class="bg hidden"
       id="payment-section"
-    ></div>
+    >
+      <div class="payment-popup">
+        <div
+          id="close-popup"
+          class="btn"
+        >
+          <i class="fa-solid fa-xmark"></i>
+        </div>
+        <h2 class="payment-title">Enter card details</h2>
+        <form
+          class="payment-form"
+          id="payment-form"
+        >
+          <input
+            required
+            type="text"
+            pattern="[A-Za-z\s]{3,}"
+            autocomplete="cc-name"
+            name="name"
+            id="payment-name"
+            placeholder="Enter your name"
+          />
+          <input
+            required
+            type="tel"
+            inputmode="numeric"
+            pattern="[0-9\s]{13,19}"
+            autocomplete="cc-number"
+            minlength="13"
+            maxlength="19"
+            name="card"
+            id="payment-card"
+            placeholder="Enter card number"
+          />
+          <input
+            required
+            type="tel"
+            inputmode="numeric"
+            pattern="[0-9\s]{3,4}"
+            autocomplete="cc-csc"
+            name="cvv"
+            id="payment-cvv"
+            minlength="3"
+            maxlength="4"
+            placeholder="Enter CVV"
+          />
+          <button
+            class="btn pay-btn"
+            id="pay-btn"
+            type="submit"
+          >
+            Pay
+          </button>
+        </form>
+      </div>
+    </div>
 
     <script
       src="./index.js"
